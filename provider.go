@@ -12,8 +12,9 @@ type Config struct {
 func Provider() *schema.Provider {
 	p := &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"zeit_dns":    resourceDns(),
-			"zeit_domain": resourceDoamin(),
+			"zeit_dns":     resourceDns(),
+			"zeit_domain":  resourceDoamin(),
+			"zeit_project": resourceProject(),
 		},
 		Schema: map[string]*schema.Schema{
 			"token": {

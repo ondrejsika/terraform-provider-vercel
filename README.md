@@ -44,6 +44,10 @@ resource "zeit_dns" "mx_sikademozeit_com" {
   value = "99 mail.sikademozeit.com."
   type = "MX"
 }
+
+resource "zeit_project" "demo" {
+  name = "sika-demo-zeit"
+}
 ```
 
 ## Change Log
