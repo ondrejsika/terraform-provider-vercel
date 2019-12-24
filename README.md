@@ -44,6 +44,10 @@ resource "zeit_dns" "mx_sikademozeit_com" {
 
 ## Change Log
 
+### v1.2.0
+
+- Add resource `zeit_dns` for buy domains on Zeit
+
 ### v1.1.0
 
 - Add `api_origin` configuration for provider
