@@ -1,0 +1,9 @@
+.vscode
+.DS_Store
+
+vendor
+terraform.tf*
+.terraform
+*.log
+
+terraform-provider-zeit
