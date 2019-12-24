@@ -34,7 +34,7 @@ resource "zeit_dns" "mail_sikademozeit_com" {
   type = "A"
 }
 
-resource "zeit_dns" "sikademozeit_com" {
+resource "zeit_dns" "mx_sikademozeit_com" {
   domain = "sikademozeit.com"
   name = ""
   value = "99 mail.sikademozeit.com."
