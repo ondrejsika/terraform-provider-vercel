@@ -4,6 +4,10 @@
     https://github.com/ondrejsika/terraform-provider-zeit
 
 
+## Buy Domain on Zeit.co using Terraform
+
+![Buy Domain on Zeit.co using Terraform](buy-domain-on-zeit-using-terraform.png)
+
 ## Example usage
 
 ```terraform
