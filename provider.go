@@ -5,7 +5,8 @@ import (
 )
 
 type Config struct {
-	Token string
+	Token     string
+	ApiOrigin string
 }
 
 func Provider() *schema.Provider {
@@ -18,11 +19,18 @@ func Provider() *schema.Provider {
 				Type:     schema.TypeString,
 				Required: true,
 			},
+			"api_origin": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Default:  "https://api.zeit.co",
+			},
 		},
 	}
 	p.ConfigureFunc = func(d *schema.ResourceData) (interface{}, error) {
+
 		config := Config{
-			Token: d.Get("token").(string),
+			Token:     d.Get("token").(string),
+			ApiOrigin: d.Get("api_origin").(string),
 		}
 		return &config, nil
 	}

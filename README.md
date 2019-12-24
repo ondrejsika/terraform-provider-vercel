@@ -9,6 +9,8 @@
 ```terraform
 provider "zeit" {
   token = "secret-token"
+  // Optional
+  // api_origin = "https://zeit-api-mock.sikademo.com"
 }
 
 resource "zeit_dns" "sikademozeit_com" {
@@ -41,6 +43,10 @@ resource "zeit_dns" "sikademozeit_com" {
 ```
 
 ## Change Log
+
+### v1.1.0
+
+- Add `api_origin` configuration for provider
 
 ### v1.0.0
 

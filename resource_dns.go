@@ -14,7 +14,7 @@ func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
 	type_ := d.Get("type").(string)
 
 	client := resty.New()
-	rawResp, err := client.R().SetAuthToken(m.(*Config).Token).SetBody(map[string]interface{}{"name": name, "value": value, "type": type_}).Post("https://api.zeit.co/v2/domains/" + domain + "/records")
+	rawResp, err := client.R().SetAuthToken(m.(*Config).Token).SetBody(map[string]interface{}{"name": name, "value": value, "type": type_}).Post(m.(*Config).ApiOrigin + "/v2/domains/" + domain + "/records")
 
 	if err != nil {
 		return err
@@ -36,7 +36,7 @@ func resourceDnsDelete(d *schema.ResourceData, m interface{}) error {
 	domain := d.Get("domain").(string)
 
 	client := resty.New()
-	_, err := client.R().SetAuthToken(m.(*Config).Token).Delete("https://api.zeit.co/v2/domains/" + domain + "/records/" + uid)
+	_, err := client.R().SetAuthToken(m.(*Config).Token).Delete(m.(*Config).ApiOrigin + "/v2/domains/" + domain + "/records/" + uid)
 
 	if err != nil {
 		return err
