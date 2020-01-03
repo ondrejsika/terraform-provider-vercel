@@ -17,6 +17,11 @@ provider "zeit" {
   // api_origin = "https://zeit-api-mock.sikademo.com"
 }
 
+resource "zeit_domain" "sikademozeit_com" {
+  domain = "sikademozeit.com"
+  expected_price = 12
+}
+
 resource "zeit_dns" "sikademozeit_com" {
   domain = "sikademozeit.com"
   name = ""
@@ -54,7 +59,7 @@ resource "zeit_project" "demo" {
 
 ### v1.2.0
 
-- Add resource `zeit_dns` for buy domains on Zeit
+- Add resource `zeit_domain` for buy domains on Zeit
 
 ### v1.1.0
 
