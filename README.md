@@ -23,28 +23,28 @@ resource "zeit_domain" "sikademozeit_com" {
 }
 
 resource "zeit_dns" "sikademozeit_com" {
-  domain = "sikademozeit.com"
+  domain = zeit_domain.sikademozeit_com.domain
   name = ""
   value = "1.2.3.4"
   type = "A"
 }
 
 resource "zeit_dns" "www_sikademozeit_com" {
-  domain = "sikademozeit.com"
+  domain = zeit_domain.sikademozeit_com.domain
   name = "www"
   value = "sikademozeit.com."
   type = "CNAME"
 }
 
 resource "zeit_dns" "mail_sikademozeit_com" {
-  domain = "sikademozeit.com"
+  domain = zeit_domain.sikademozeit_com.domain
   name = "mail"
   value = "5.6.7.8"
   type = "A"
 }
 
 resource "zeit_dns" "mx_sikademozeit_com" {
-  domain = "sikademozeit.com"
+  domain = zeit_domain.sikademozeit_com.domain
   name = ""
   value = "99 mail.sikademozeit.com."
   type = "MX"
