@@ -1,3 +1,5 @@
+> This repository is in __Work in Progress__ state. If you need something, create an [issue](https://github.com/ondrejsika/terraform-provider-zeit/issues/new)
+
 # terraform-provider-zeit
 
     2019 Ondrej Sika <ondrej@ondrejsika.com>
