@@ -6,6 +6,11 @@
     https://github.com/ondrejsika/terraform-provider-zeit
 
 
+## My Related Projects
+
+- [ondrejsika/zeit-go](https://github.com/ondrejsika/zeit-go) - Go client for Zeit API
+- [ondrejsika/zeit-api-mock](https://github.com/ondrejsika/zeit-api-mock) - Zeit API Mock
+
 ## Buy Domain on Zeit.co using Terraform
 
 ![Buy Domain on Zeit.co using Terraform](buy-domain-on-zeit-using-terraform.png)
