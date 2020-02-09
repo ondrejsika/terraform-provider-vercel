@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -15,10 +16,17 @@ func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
 	d.SetId(domain)
 	d.Set("remove_domain_on_destroy", removeDomainOnDestroy)
 
-	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
+	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
 
 	if err != nil {
 		return fmt.Errorf("%s", err)
+	}
+
+	var response map[string]map[string]interface{}
+	json.Unmarshal([]byte(rawResp.Body()), &response)
+
+	if response["error"]["code"] == "not_available" {
+		return fmt.Errorf("Domain %s is not available", domain)
 	}
 
 	return nil

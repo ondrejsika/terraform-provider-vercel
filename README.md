@@ -64,6 +64,11 @@ resource "zeit_project" "demo" {
 
 ## Change Log
 
+### v1.3.2
+
+- Fix error handing of errors from `ondrejsika/zeit-go` API client
+- Handle buy of unavailable domains
+
 ### v1.3.1
 
 - Update `ondrejsika/zeit-go` for `/v4/domain/buy` API
