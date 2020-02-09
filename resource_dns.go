@@ -2,6 +2,8 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
+
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/ondrejsika/zeit-go"
 )
@@ -15,7 +17,7 @@ func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
 	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).CreateRecord(domain, type_, name, value)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("%s", err)
 	}
 
 	var response map[string]interface{}
@@ -36,7 +38,7 @@ func resourceDnsDelete(d *schema.ResourceData, m interface{}) error {
 	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).DeleteRecord(domain, uid)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("%s", err)
 	}
 	return nil
 }

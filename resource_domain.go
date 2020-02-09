@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/ondrejsika/zeit-go"
 )
@@ -16,7 +18,7 @@ func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
 	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
 
 	if err != nil {
-		return err
+		return fmt.Errorf("%s", err)
 	}
 
 	return nil
@@ -38,7 +40,7 @@ func resourceDomainDelete(d *schema.ResourceData, m interface{}) error {
 		_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RemoveDomain(domain)
 
 		if err != nil {
-			return err
+			return fmt.Errorf("%s", err)
 		}
 	}
 
