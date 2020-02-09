@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/go-resty/resty/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/ondrejsika/zeit-go"
 )
 
 func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
@@ -11,8 +11,7 @@ func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
 
 	d.SetId(domain)
 
-	client := resty.New()
-	_, err := client.R().SetAuthToken(m.(*Config).Token).SetBody(map[string]interface{}{"name": domain, "expectedPrice": expectedPrice}).Post(m.(*Config).ApiOrigin + "/v2/domains/buy")
+	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
 
 	if err != nil {
 		return err

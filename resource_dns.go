@@ -2,9 +2,8 @@ package main
 
 import (
 	"encoding/json"
-
-	"github.com/go-resty/resty/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/ondrejsika/zeit-go"
 )
 
 func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
@@ -13,8 +12,7 @@ func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
 	value := d.Get("value").(string)
 	type_ := d.Get("type").(string)
 
-	client := resty.New()
-	rawResp, err := client.R().SetAuthToken(m.(*Config).Token).SetBody(map[string]interface{}{"name": name, "value": value, "type": type_}).Post(m.(*Config).ApiOrigin + "/v2/domains/" + domain + "/records")
+	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).CreateRecord(domain, type_, name, value)
 
 	if err != nil {
 		return err
@@ -35,8 +33,7 @@ func resourceDnsDelete(d *schema.ResourceData, m interface{}) error {
 	uid := d.Id()
 	domain := d.Get("domain").(string)
 
-	client := resty.New()
-	_, err := client.R().SetAuthToken(m.(*Config).Token).Delete(m.(*Config).ApiOrigin + "/v2/domains/" + domain + "/records/" + uid)
+	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).DeleteRecord(domain, uid)
 
 	if err != nil {
 		return err
