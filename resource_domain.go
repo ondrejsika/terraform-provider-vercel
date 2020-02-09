@@ -8,8 +8,10 @@ import (
 func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
 	domain := d.Get("domain").(string)
 	expectedPrice := d.Get("expected_price").(int)
+	removeDomainOnDestroy := d.Get("remove_domain_on_destroy").(bool)
 
 	d.SetId(domain)
+	d.Set("remove_domain_on_destroy", removeDomainOnDestroy)
 
 	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
 
@@ -29,6 +31,17 @@ func resourceDomainUpdate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceDomainDelete(d *schema.ResourceData, m interface{}) error {
+	domain := d.Get("domain").(string)
+	removeDomainOnDestroy := d.Get("remove_domain_on_destroy").(bool)
+
+	if removeDomainOnDestroy {
+		_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RemoveDomain(domain)
+
+		if err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -48,6 +61,11 @@ func resourceDoamin() *schema.Resource {
 			"expected_price": &schema.Schema{
 				Type:     schema.TypeInt,
 				Optional: true,
+			},
+			"remove_domain_on_destroy": &schema.Schema{
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  false,
 			},
 		},
 	}

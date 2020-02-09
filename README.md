@@ -64,6 +64,11 @@ resource "zeit_project" "demo" {
 
 ## Change Log
 
+### v1.3.0
+
+- Add parameter `remove_domain_on_destroy` with default `false` to `zeit_domain`. When you call `terraform destroy` domain will be kept on Zeit if you not set `remove_domain_on_destroy=true`
+- Rewrite for [ondrejsika/zeit-go](https://github.com/ondrejsika/zeit-go)
+
 ### v1.2.0
 
 - Add resource `zeit_domain` for buy domains on Zeit
