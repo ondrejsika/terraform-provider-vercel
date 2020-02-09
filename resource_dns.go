@@ -14,7 +14,7 @@ func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
 	value := d.Get("value").(string)
 	type_ := d.Get("type").(string)
 
-	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).CreateRecord(domain, type_, name, value)
+	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawCreateRecord(domain, type_, name, value)
 
 	if err != nil {
 		return fmt.Errorf("%s", err)
@@ -35,7 +35,7 @@ func resourceDnsDelete(d *schema.ResourceData, m interface{}) error {
 	uid := d.Id()
 	domain := d.Get("domain").(string)
 
-	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).DeleteRecord(domain, uid)
+	_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawDeleteRecord(domain, uid)
 
 	if err != nil {
 		return fmt.Errorf("%s", err)

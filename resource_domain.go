@@ -16,7 +16,7 @@ func resourceDomainCreate(d *schema.ResourceData, m interface{}) error {
 	d.SetId(domain)
 	d.Set("remove_domain_on_destroy", removeDomainOnDestroy)
 
-	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).BuyDomain(domain, expectedPrice)
+	rawResp, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawBuyDomain(domain, expectedPrice)
 
 	if err != nil {
 		return fmt.Errorf("%s", err)
@@ -45,7 +45,7 @@ func resourceDomainDelete(d *schema.ResourceData, m interface{}) error {
 	removeDomainOnDestroy := d.Get("remove_domain_on_destroy").(bool)
 
 	if removeDomainOnDestroy {
-		_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RemoveDomain(domain)
+		_, err := zeit.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawRemoveDomain(domain)
 
 		if err != nil {
 			return fmt.Errorf("%s", err)
