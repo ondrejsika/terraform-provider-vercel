@@ -143,6 +143,8 @@ github.com/ondrejsika/zeit-go v0.0.0-20200125132618-57d6e23db72b h1:+4D0/OI1Md4A
 github.com/ondrejsika/zeit-go v0.0.0-20200125132618-57d6e23db72b/go.mod h1:rBsBFuIZKiQ8HPMTi03yZa1XPPqoZK80zqAbCC/C+W8=
 github.com/ondrejsika/zeit-go v0.0.0-20200209091425-f8ed35de7a51 h1:I6VNb/WK1AU0PXDI/M+0WcTpVc7Tp9lqqg/mSQNGKZg=
 github.com/ondrejsika/zeit-go v0.0.0-20200209091425-f8ed35de7a51/go.mod h1:rBsBFuIZKiQ8HPMTi03yZa1XPPqoZK80zqAbCC/C+W8=
+github.com/ondrejsika/zeit-go v0.0.0-20200209134810-5d2d94fbafe9 h1:57k+l1xHHaSCiQ5g41Zzd7f/xRa93QuteNyWre9r+as=
+github.com/ondrejsika/zeit-go v0.0.0-20200209134810-5d2d94fbafe9/go.mod h1:rBsBFuIZKiQ8HPMTi03yZa1XPPqoZK80zqAbCC/C+W8=
 github.com/pierrec/lz4 v2.0.5+incompatible/go.mod h1:pdkljMzZIN41W+lC3N2tnIh5sFi+IEE17M5jbnwPHcY=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/posener/complete v1.1.1/go.mod h1:em0nMJCgc9GFtwrmVmEMR/ZL6WyhyjMBndrE9hABlRI=
