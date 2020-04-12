@@ -4,11 +4,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch:
+          - amd64
+        os:
+          - linux
+          - darwin
+          - windows
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-go@v2-beta
-      - run: go build .
-      - uses: actions/upload-artifact@v1
+      - run: GOOS=${{ matrix.os }} GOARCH=${{ matrix.arch }} go build .
+      - uses: actions/upload-artifact@v2-preview
         with:
-          name: terraform-provider-zeit
-          path: terraform-provider-zeit
+          name: terraform-provider-zeit_${{ matrix.os }}_${{ matrix.arch }}
+          path: terraform-provider-zeit*
