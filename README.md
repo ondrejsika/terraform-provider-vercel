@@ -1,9 +1,9 @@
-> This repository is in __Work in Progress__ state. If you need something, create an [issue](https://github.com/ondrejsika/terraform-provider-zeit/issues/new)
+> This repository is in **Work in Progress** state. If you need something, create an [issue](https://github.com/ondrejsika/terraform-provider-vercel/issues/new)
 
-# terraform-provider-zeit
+# terraform-provider-vercel
 
     2019 Ondrej Sika <ondrej@ondrejsika.com>
-    https://github.com/ondrejsika/terraform-provider-zeit
+    https://github.com/ondrejsika/terraform-provider-vercel
 
 ![Build](https://github.com/ondrejsika/terraform-provider-zeit/workflows/Build/badge.svg)
 
