@@ -1,9 +1,6 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/ondrejsika/vercel-go"
 )
@@ -14,16 +11,13 @@ func resourceDnsCreate(d *schema.ResourceData, m interface{}) error {
 	value := d.Get("value").(string)
 	type_ := d.Get("type").(string)
 
-	rawResp, err := vercel.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawCreateRecord(domain, type_, name, value)
+	response, err := vercel.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).CreateRecord(domain, type_, name, value)
 
 	if err != nil {
-		return fmt.Errorf("%s", err)
+		return err
 	}
 
-	var response map[string]interface{}
-	json.Unmarshal([]byte(rawResp.Body()), &response)
-
-	d.SetId(response["uid"].(string))
+	d.SetId(response.UID)
 	return nil
 }
 
@@ -35,10 +29,10 @@ func resourceDnsDelete(d *schema.ResourceData, m interface{}) error {
 	uid := d.Id()
 	domain := d.Get("domain").(string)
 
-	_, err := vercel.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).RawDeleteRecord(domain, uid)
+	err := vercel.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).DeleteRecord(domain, uid)
 
 	if err != nil {
-		return fmt.Errorf("%s", err)
+		return err
 	}
 	return nil
 }
