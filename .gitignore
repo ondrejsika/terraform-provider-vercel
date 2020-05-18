@@ -6,4 +6,4 @@ terraform.tf*
 .terraform
 *.log
 
-terraform-provider-zeit
+terraform-provider-vercel

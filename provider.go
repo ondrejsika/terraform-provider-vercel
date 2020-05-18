@@ -12,9 +12,9 @@ type Config struct {
 func Provider() *schema.Provider {
 	p := &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
-			"zeit_dns":     resourceDns(),
-			"zeit_domain":  resourceDoamin(),
-			"zeit_project": resourceProject(),
+			"vercel_dns":     resourceDns(),
+			"vercel_domain":  resourceDoamin(),
+			"vercel_project": resourceProject(),
 		},
 		Schema: map[string]*schema.Schema{
 			"token": {
@@ -24,7 +24,7 @@ func Provider() *schema.Provider {
 			"api_origin": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Default:  "https://api.zeit.co",
+				Default:  "https://api.vercel.com",
 			},
 		},
 	}

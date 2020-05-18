@@ -5,65 +5,69 @@
     2019 Ondrej Sika <ondrej@ondrejsika.com>
     https://github.com/ondrejsika/terraform-provider-vercel
 
-![Build](https://github.com/ondrejsika/terraform-provider-zeit/workflows/Build/badge.svg)
+![Build](https://github.com/ondrejsika/terraform-provider-vercel/workflows/Build/badge.svg)
 
 ## My Related Projects
 
-- [ondrejsika/zeit-go](https://github.com/ondrejsika/zeit-go) - Go client for Zeit API
-- [ondrejsika/zeit-api-mock](https://github.com/ondrejsika/zeit-api-mock) - Zeit API Mock
+- [ondrejsika/vercel-go](https://github.com/ondrejsika/vercel-go) - Go client for Vercel API
+- [ondrejsika/vercel-api-mock](https://github.com/ondrejsika/vercel-api-mock) - Vercel API Mock
 
-## Buy Domain on Zeit.co using Terraform
+## Buy Domain on Vercel using Terraform
 
-![Buy Domain on Zeit.co using Terraform](buy-domain-on-zeit-using-terraform.png)
+![Buy Domain on Vercel using Terraform](buy-domain-on-zeit-using-terraform.png)
 
 ## Example usage
 
 ```terraform
-provider "zeit" {
+provider "vercel" {
   token = "secret-token"
   // Optional
-  // api_origin = "https://zeit-api-mock.sikademo.com"
+  // api_origin = "https://vercel-api-mock.sikademo.com"
 }
 
-resource "zeit_domain" "sikademozeit_com" {
-  domain = "sikademozeit.com"
+resource "vercel_domain" "sikademovercel_com" {
+  domain = "sikademovercel.com"
   expected_price = 12
 }
 
-resource "zeit_dns" "sikademozeit_com" {
-  domain = zeit_domain.sikademozeit_com.domain
+resource "vercel_dns" "sikademovercel_com" {
+  domain = vercel_domain.sikademovercel_com.domain
   name = ""
   value = "1.2.3.4"
   type = "A"
 }
 
-resource "zeit_dns" "www_sikademozeit_com" {
-  domain = zeit_domain.sikademozeit_com.domain
+resource "vercel_dns" "www_sikademovercel_com" {
+  domain = vercel_domain.sikademovercel_com.domain
   name = "www"
-  value = "sikademozeit.com."
+  value = "sikademovercel.com."
   type = "CNAME"
 }
 
-resource "zeit_dns" "mail_sikademozeit_com" {
-  domain = zeit_domain.sikademozeit_com.domain
+resource "vercel_dns" "mail_sikademovercel_com" {
+  domain = vercel_domain.sikademovercel_com.domain
   name = "mail"
   value = "5.6.7.8"
   type = "A"
 }
 
-resource "zeit_dns" "mx_sikademozeit_com" {
-  domain = zeit_domain.sikademozeit_com.domain
+resource "vercel_dns" "mx_sikademovercel_com" {
+  domain = vercel_domain.sikademovercel_com.domain
   name = ""
-  value = "99 mail.sikademozeit.com."
+  value = "99 mail.sikademovercel.com."
   type = "MX"
 }
 
-resource "zeit_project" "demo" {
-  name = "sika-demo-zeit"
+resource "vercel_project" "demo" {
+  name = "sika-demo-vercel"
 }
 ```
 
 ## Change Log
+
+### v2.0.0
+
+- Change ZEIT to Vercel (terraform-provider-vercel, resource names)
 
 ### v1.3.2
 
