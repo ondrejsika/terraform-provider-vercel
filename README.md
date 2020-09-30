@@ -65,6 +65,10 @@ resource "vercel_project" "demo" {
 
 ## Change Log
 
+### v2.0.1
+
+- Add Go Realaser config
+
 ### v2.0.0
 
 - Change ZEIT to Vercel (terraform-provider-vercel, resource names)
