@@ -55,12 +55,30 @@ func resourceDomainDelete(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
 
+func resourceDomainImport(d *schema.ResourceData, m interface{}) ([]*schema.ResourceData, error) {
+	domain := d.Id()
+	d.Set("domain", domain)
+	d.Set("remove_domain_on_destroy", false)
+
+	resp, err := vercel.NewOrigin(m.(*Config).Token, m.(*Config).ApiOrigin).GetDomainPrice(domain)
+
+	if err != nil {
+		return nil, fmt.Errorf("%s", err)
+	}
+
+	d.Set("expected_price", resp.Price)
+	return []*schema.ResourceData{d}, nil
+}
+
 func resourceDoamin() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceDomainCreate,
 		Read:   resourceDomainRead,
 		Update: resourceDomainUpdate,
 		Delete: resourceDomainDelete,
+		Importer: &schema.ResourceImporter{
+			State: resourceDomainImport,
+		},
 
 		Schema: map[string]*schema.Schema{
 			"domain": &schema.Schema{

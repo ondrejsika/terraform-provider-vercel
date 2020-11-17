@@ -65,6 +65,10 @@ resource "vercel_project" "demo" {
 
 ## Change Log
 
+### v2.1.0
+
+- Add `vercel_domain` importer
+
 ### v2.0.1
 
 - Add Go Realaser config
