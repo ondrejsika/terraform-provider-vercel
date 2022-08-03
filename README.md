@@ -1,3 +1,5 @@
+# ⚠️⚠️ This is not official Terraform provider for Vercel. For the official provider go to: [vercel/terraform-provider-vercel](https://github.com/vercel/terraform-provider-vercel) ⚠️⚠️
+
 > This repository is in **Work in Progress** state. If you need something, create an [issue](https://github.com/ondrejsika/terraform-provider-vercel/issues/new)
 
 # ondrejsika/terraform-provider-vercel
