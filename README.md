@@ -1,6 +1,6 @@
 > This repository is in **Work in Progress** state. If you need something, create an [issue](https://github.com/ondrejsika/terraform-provider-vercel/issues/new)
 
-# terraform-provider-vercel
+# ondrejsika/terraform-provider-vercel
 
     2019 Ondrej Sika <ondrej@ondrejsika.com>
     https://github.com/ondrejsika/terraform-provider-vercel
